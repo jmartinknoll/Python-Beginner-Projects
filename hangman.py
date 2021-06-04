@@ -1,3 +1,5 @@
+# Hangman
+
 # This is more of a “guess the word” game. The core concepts you have to use while developing this project
 # are variables, random, integer, strings, char, input and output, and boolean. 
 # In the game, users have to enter letter guesses, and each user will have a limited number of guesses 
@@ -32,10 +34,12 @@ def play_game(word):
         if len(guess) == 1 and guess.isalpha():
             if guess not in word:
                 print(guess, 'is not in the word')
-                attempts_remaining -= 1
                 guessed_letters.append(guess)
+                attempts_remaining -= 1
+                print(attempts_remaining)
             elif guess in guessed_letters:
                 print('Letter has already been guessed.')
+                print(attempts_remaining)
             else:
                 print(guess, 'is in the word.')
                 guessed_letters.append(guess)
@@ -55,8 +59,10 @@ def play_game(word):
                 print(guess, 'is not the word.')
                 guessed_words.append(guess)
                 attempts_remaining -= 1
+                print(attempts_remaining)
             elif guess in guessed_words:
                 print(guess, 'has already been guessed.')
+                print(attempts_remaining)
             else:
                 word_has_been_guessed = True
                 word_display = word
