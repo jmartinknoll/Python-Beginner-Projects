@@ -30,14 +30,14 @@ def play_game():
 
     turn = 'X'
     count = 0
+    win = False
+    draw = False
 
     print('To choose a square, enter a number 1-9. From left to right:')
     print('7-8-9 represents the top row, 4-5-6 the middle row, 1-2-3 the bottom row.')
     print_board(board_state)
 
-    # range must be more that the possible number of turns, to account for possible invalid input
-    # could be done with a while loop that includes win states and count
-    for i in range(18):
+    while win == False and draw == False:
         print(turn, 'to move.') 
 
         move = input('Where would you like to place? (1-9): ')
@@ -61,32 +61,33 @@ def play_game():
         if count >= 5:
             if board_state['7'] == board_state['8'] == board_state['9'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['4'] == board_state['5'] == board_state['6'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['1'] == board_state['2'] == board_state['3'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['7'] == board_state['4'] == board_state['1'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['8'] == board_state['5'] == board_state['2'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['9'] == board_state['6'] == board_state['3'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['7'] == board_state['5'] == board_state['3'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
             elif board_state['9'] == board_state['5'] == board_state['1'] != ' ':
                 print(turn, 'won.')
-                break
+                win = True
 
         # If nobody has won and the board is full, it's a draw
-        if count == 9:
+        if count == 9 and win == False:
             print("It's a draw.")
+            draw = True
         
         # change the player after every move
         if turn == 'X':
